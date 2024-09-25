@@ -1,40 +1,27 @@
 package com.natsi.core.factory;
 
-import com.natsi.entities.User;
-import com.natsi.repositories.bd.ArticleRepositoryBD;
-import com.natsi.repositories.bd.ClientRepositoryBD;
-import com.natsi.repositories.list.ArticleRepository;
-import com.natsi.repositories.list.ClientRepository;
-import com.natsi.repositories.list.UserRepository;
-import com.natsi.repositories.list.Impl.UserRepositoryList;
-import com.natsi.services.ClientService;
-import com.natsi.services.Impl.ArticleServiceImpl;
-import com.natsi.services.Impl.ClientServiceImpl;
-import com.natsi.services.Impl.UserServiceImpl;
+import com.natsi.services.MedecinService;
+import com.natsi.services.Impl.MedecinServiceImpl;
+import com.natsi.services.Impl.RdvServiceImpl;
 
 public class FactoryServ {
 
-        UserServiceImpl userServiceImpl= null;
-        ClientService clientServiceImpl= null;
-        ArticleServiceImpl articleServiceImpl=null;
-        FactoryRepo factoryService = new FactoryRepo();
+        MedecinServiceImpl medServiceImpl= null;
+        RdvServiceImpl rdServiceImpl= null;
+        MedecinService mdServiceImpl= null;
+        RdvServiceImpl rdvServiceImpl=null;
+        FactoryRepo factoryrepo = new FactoryRepo();
         
-    public  UserServiceImpl getInstanceUserServiceImpl(){
-        if(userServiceImpl==null){
-            userServiceImpl=new UserServiceImpl(factoryService.getInstanceUserRepository());
+    public MedecinService  getInstanceMedService(){
+        if(mdServiceImpl==null){
+            mdServiceImpl= new MedecinServiceImpl(medServiceImpl);
         }
-        return userServiceImpl;
+        return  mdServiceImpl;
     }
-    public ClientService  getInstanceClientService(){
-        if(clientServiceImpl==null){
-            clientServiceImpl= new ClientServiceImpl(factoryService.getInstanceUserRepository(),factoryService.getInstanceClientRepository());
+    public    RdvServiceImpl getInstanceRdvServiceImpl(){
+        if(rdvServiceImpl==null){
+            rdvServiceImpl= new RdvServiceImpl(rdServiceImpl);
         }
-        return  clientServiceImpl;
-    }
-    public   ArticleServiceImpl getInstanceArticleServiceImpl(){
-        if(articleServiceImpl==null){
-            articleServiceImpl= new ArticleServiceImpl(factoryService.getInstanceArticleRepository());
-        }
-        return  articleServiceImpl;
+        return  rdvServiceImpl;
     }
 }

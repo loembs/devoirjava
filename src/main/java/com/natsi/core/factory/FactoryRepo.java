@@ -1,41 +1,27 @@
 package com.natsi.core.factory;
 
-import com.natsi.entities.User;
-import com.natsi.repositories.bd.ArticleRepositoryBD;
-import com.natsi.repositories.bd.ClientRepositoryBD;
-import com.natsi.repositories.list.ArticleRepository;
-import com.natsi.repositories.list.ClientRepository;
-import com.natsi.repositories.list.UserRepository;
-import com.natsi.repositories.list.Impl.ArticleRepositoryList;
-import com.natsi.repositories.list.Impl.ClientRepositoryList;
-import com.natsi.repositories.list.Impl.UserRepositoryList;
+import com.natsi.repositories.MedecinRepository;
+import com.natsi.repositories.bd.MedecinRepositoryBD;
+import com.natsi.repositories.bd.RendezVousRepositoryBD;
 
 public class FactoryRepo {
      
-        private  ArticleRepository articleRepository=null;
-        private  ClientRepository clientRepo=null;
-        private  UserRepository<User> userRepository=null;
+        private  MedecinRepository medRepository=null;
+        private  RendezVousRepositoryBD rdvRepo=null;
         
-    public  ClientRepository getInstanceClientRepository(){
-        if(clientRepo==null){
-            clientRepo=new ClientRepositoryBD();
+    public  MedecinRepository getInstanceMedecinRepository(){
+        if(medRepository==null){
+            medRepository=new MedecinRepositoryBD();
         }
-        return clientRepo;
+        return medRepository;
     }
-    public  UserRepository<User>  getInstanceUserRepository(){
-        if( userRepository==null){
-            userRepository= new UserRepositoryList();
+   
+    public  RendezVousRepositoryBD  getInstanceRdvRepository(){
+        if(rdvRepo==null){
+            rdvRepo= new RendezVousRepositoryBD();
         }
-        return  userRepository;
-    }
-    public  ArticleRepository  getInstanceArticleRepository(){
-        if(articleRepository==null){
-            articleRepository= new ArticleRepositoryBD();
-        }
-        return  articleRepository;
+        return  rdvRepo;
     }
 
-    //ClientRepositoryBD clientRepositoryBD = new ClientRepositoryBD();
-    //UserRepository<User> userRepository= new UserRepositoryBD(clientRepositoryBD);
     
 }

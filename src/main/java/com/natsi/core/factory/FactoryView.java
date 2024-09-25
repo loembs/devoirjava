@@ -1,26 +1,23 @@
 package com.natsi.core.factory;
 
-import com.natsi.services.ClientService;
-import com.natsi.services.Impl.ArticleServiceImpl;
-import com.natsi.services.Impl.UserServiceImpl;
-import com.natsi.views.ArticleView;
-import com.natsi.views.ClientView;
+import com.natsi.views.MedecinView;
+import com.natsi.views.RdViews;
 
 public class FactoryView {
-        ClientView clientView= null;
-        ArticleView articleView= null;
+        MedecinView medView= null;
+        RdViews rdvView= null;
         
-    public  ClientView getInstanceClientView(){
-        if(clientView==null){
-            clientView=new ClientView();
+    public  MedecinView getInstanceMedecinView(){
+        if(medView==null){
+            medView=new MedecinView();
         }
-        return clientView;
+        return medView;
     }
-    public  ArticleView getInstanceArticleView(){
-        if(articleView==null){
-            articleView=new  ArticleView();
+    public  RdViews getInstanceArticleView(){
+        if(rdvView==null){
+            rdvView=new  RdViews();
         }
-        return articleView;
+        return rdvView;
     }
     
 }
